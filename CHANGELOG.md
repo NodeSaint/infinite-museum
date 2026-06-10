@@ -4,6 +4,12 @@ All notable changes to The Infinite Museum. Dates are absolute (ISO).
 
 ## [Unreleased] — branch `dev`
 
+### 2026-06-10 — Push: `main` → live
+- Created public repo `NodeSaint/infinite-museum`; pushed `main` and `dev`. (The brief's
+  "nuvixstudio" namespace does not exist on GitHub; the authenticated account is NodeSaint, so the
+  repo and Pages URL use NodeSaint.)
+- Enabled GitHub Pages (build type: GitHub Actions). Live: https://nodesaint.github.io/infinite-museum/
+
 ### 2026-06-10 — Initial build (walkable shell → generation)
 - **Scaffold**: Vite 8 + vanilla TypeScript 6 + Three.js 0.184, no framework. `base:
   /infinite-museum/` for Pages, `/` for dev. Dual entry (`index.html`, `test.html`).

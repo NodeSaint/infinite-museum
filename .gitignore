@@ -7,3 +7,4 @@ dist
 # one-off local debug scratch (nav-test.mjs is kept — it's the documented harness)
 probe.mjs
 smoke.mjs
+sample.ts
