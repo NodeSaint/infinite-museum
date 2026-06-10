@@ -4,6 +4,17 @@ All notable changes to The Infinite Museum. Dates are absolute (ISO).
 
 ## [Unreleased] — branch `dev`
 
+### 2026-06-10 — Tier 1 BYO-key living curator (build-order step 5)
+- `codex/tier1.ts`: optional Anthropic call on entry (model id in the single constant
+  `CURATOR_MODEL = 'claude-opus-4-8'`), direct browser `fetch` with header
+  `anthropic-dangerous-direct-browser-access: true`. Returns a bespoke Codex (museum name, epigraph,
+  movements, artists) which the keyless Tier-0 artwork + placard generators then run against, so the
+  model-written canon flows through to every placard. Strict JSON extraction + hard validation +
+  clamping; dangling feud/rival references dropped. Any failure (bad key, network, malformed reply)
+  falls back to Tier 0 silently with clear in-interface guidance — never a raw stack trace.
+- Verified the fallback path headlessly: an invalid key yields "That API key was not accepted.
+  Showing the keyless museum." and the keyless museum renders unaffected.
+
 ### 2026-06-10 — Push: `main` → live
 - Created public repo `NodeSaint/infinite-museum`; pushed `main` and `dev`. (The brief's
   "nuvixstudio" namespace does not exist on GitHub; the authenticated account is NodeSaint, so the

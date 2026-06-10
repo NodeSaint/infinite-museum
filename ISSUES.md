@@ -3,8 +3,12 @@
 Known issues, limitations and ideas. Newest first.
 
 ## Open
-- **Tier 1 is a stub.** `codex/tier1.ts` always returns `null` (→ Tier 0). Full BYO-key curator
-  (Codex on entry, artworks per room, validation/clamp, SVG sanitisation) is build-order step 5.
+- **Tier 1 happy path untested in CI.** `codex/tier1.ts` is fully implemented (bespoke Codex on
+  entry, strict validation, silent fallback) and the *failure* path is verified, but writing a real
+  bespoke museum needs a live Anthropic key, which is intentionally absent from the repo.
+- **Tier 1 writes the Codex, not per-room artworks.** The bespoke canon drives the keyless artwork +
+  placard generators (so placards cite the model-written manifestos/feuds). A per-room Tier-1 call
+  (system + params + placard as strict JSON) plus the SVG sanitiser are the documented next step.
 - **No collision with the bench / walls beyond bounds.** Movement is clamped to the room rectangle;
   the bench and frames are not solid. Acceptable (museum pace), revisit if it feels wrong.
 - **Placards are read off a single texture.** Long Tier-1 prose may overflow the plaque; the body is

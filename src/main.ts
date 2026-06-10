@@ -104,13 +104,16 @@ async function beginVisit(unteth: boolean): Promise<void> {
   // Optional Tier 1 upgrade — silently falls back to Tier 0 on any failure.
   if (getApiKey()) {
     hud.toast('Consulting the curator…', 2000);
-    const upgraded = await maybeUpgradeWithCurator(codex, getApiKey()!);
-    if (upgraded) {
-      codex = upgraded;
+    const result = await maybeUpgradeWithCurator(codex, getApiKey()!);
+    if (result.ok) {
+      codex = result.codex;
       rooms.disposeAll();
       rooms = new RoomManager(engine.scene, codex);
       setState({ codex });
       hud.toast('The curator has written this museum.', 2600);
+    } else {
+      // Clear, friendly guidance — never a raw stack trace.
+      hud.toast(result.reason, 3600);
     }
   }
 

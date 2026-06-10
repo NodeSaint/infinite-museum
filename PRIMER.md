@@ -50,6 +50,10 @@ Mobile: left thumb-stick walk, right-half drag look. Walk into a lit doorway to 
 - Headless smoke + 30-room memory test: `node nav-test.mjs` (needs dev server + system Chrome).
 
 ## Status (see CHANGELOG.md / tasks/todo.md)
-Build order 1 (walkable shell) done & verified. 2–4 substantially in place (six systems, room
-graph + streaming, anomalies/bench/guide/postcard/mobile). Tier 1 (step 5) is a working stub that
-always falls back to Tier 0 — flesh out `codex/tier1.ts` next.
+All five build-order steps implemented and live. Walkable shell, six art systems + `/test`, Tier-0
+codex + impossible room graph + bounded-memory streaming + seed-in-URL, the full dressing layer
+(anomalies, bench, audio guide, postcard, mobile), and the Tier-1 BYO-key curator
+(`codex/tier1.ts` — one Anthropic call on entry writes a bespoke Codex that the keyless artwork +
+placard generators then run against; model id in the single constant `CURATOR_MODEL`). The Tier-1
+fallback path is verified (invalid key → friendly toast → keyless museum). The Tier-1 *happy* path
+needs a real Anthropic key to exercise end-to-end — untested in CI by design (no key in the repo).
